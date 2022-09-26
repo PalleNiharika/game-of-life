@@ -8,6 +8,7 @@ pipeline {
         }
         stage('learning') {
             steps {
+                agent{label 'OPENJDK-11-MVN'}
                 git url: 'https://github.com/GitPracticeRepo/game-of-life.git', 
                     branch: 'brach_1'
             }
