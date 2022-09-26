@@ -9,7 +9,7 @@ pipeline {
         stage('learning') {
             steps {
                 git url: 'https://github.com/GitPracticeRepo/game-of-life.git', 
-                    branch: 'master'
+                    branch: 'brach_1'
             }
         }
     }
