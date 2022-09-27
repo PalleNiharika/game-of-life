@@ -1,15 +1,26 @@
-node {
-    stage('test') {
-        sh 'echo hello'
+pipeline {
+    agent any
+    stages {
+        stage('test') {
+            steps {
+                sh 'echo hello'
+            }
+        }
+        stage('learning') {
+            steps {
+                git url: 'https://github.com/PalleNiharika/game-of-life.git', 
+                    branch: 'master'
+            }
+        }
+        stage ('build'){
+            steps{
+                sh 'mvn package'
+            }
+        }
+        stage('Archive the Artifacts'){
+            steps{
+                Archive 'target/*.jar'
+            }
     }
-    stage('learning') {
-        git url: 'https://github.com/NiharikaReddy/game-of-life.git',
-            branch: 'master'
-    }
-    stage ('build'){            
-        sh 'mvn package'
-    }
-    stage('Archive the Artifacts'){
-        Archive 'target/*.jar'
     }
 }
