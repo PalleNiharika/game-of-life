@@ -9,4 +9,7 @@ node {
     stage ('build'){            
         sh 'mvn package'
     }
+    stage('Archive the Artifacts'){
+        Archive 'target/*.jar'
+    }
 }
